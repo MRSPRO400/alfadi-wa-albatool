@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>لوحة التحكم - الفادي والبتول</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#0f0f0f;
+    color:white;
+}
+
+/* الهيدر */
+.header{
+    background:linear-gradient(90deg,#111,#1a1a1a);
+    padding:18px;
+    text-align:center;
+    font-size:22px;
+    color:gold;
+    border-bottom:1px solid rgba(255,215,0,0.2);
+}
+
+/* الكارد الرئيسي */
+.container{
+    max-width:650px;
+    margin:40px auto;
+    background:#1a1a1a;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* العنوان */
+.container h2{
+    text-align:center;
+    color:gold;
+    margin-bottom:20px;
+}
+
+/* الحقول */
+input, textarea, select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:#2a2a2a;
+    color:white;
+    font-size:14px;
+}
+
+textarea{
+    resize:none;
+    height:100px;
+}
+
+/* زر الإضافة */
+button{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    background:gold;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+    background:#ffd700;
+}
+
+/* صندوق صغير */
+.note{
+    text-align:center;
+    font-size:12px;
+    color:#aaa;
+    margin-top:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    لوحة التحكم - إدارة المنتجات
+</div>
+
+<div class="container">
+
+    <h2>إضافة منتج جديد</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <input type="text" name="name" placeholder="اسم المنتج" required>
+
+        <textarea name="description" placeholder="وصف المنتج"></textarea>
+
+        <select name="category">
+            <option value="rings">خواتم</option>
+            <option value="bracelets">أساور</option>
+            <option value="neclaces">سلاسل</option>
+            <option value="assests">أطقم</option>
+            <option value="circle">حلقان</option>
+        </select>
+
+        <input type="file" name="image" required>
+
+        <button type="submit">إضافة المنتج</button>
+
+    </form>
+
+    <div class="note">
+        يتم رفع المنتج مباشرة إلى الموقع بعد الإضافة
+    </div>
+<h2>تعديل أسعار الذهب</h2>
+
+<form action="/update-gold" method="POST">
+
+    <input
+        type="number"
+        name="gold24"
+        value="{{ prices.gold24 }}"
+        placeholder="عيار 24">
+
+    <br><br>
+
+    <input
+        type="number"
+        name="gold21"
+        value="{{ prices.gold21 }}"
+        placeholder="عيار 21">
+
+    <br><br>
+
+    <input
+        type="number"
+        name="gold18"
+        value="{{ prices.gold18 }}"
+        placeholder="عيار 18">
+
+    <br><br>
+
+    <input
+        type="number"
+        name="pound"
+        value="{{ prices.pound }}"
+        placeholder="الجنيه الذهب">
+
+    <br><br>
+
+    <button type="submit">
+        حفظ الأسعار
+    </button>
+
+</form>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>المفضلة</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#111;
+    color:white;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:#222;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+button{
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    cursor:pointer;
+}
+.card {
+    background: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: 0.3s;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 260px;              /* مهم */
+    object-fit: cover;         /* أهم سطر */
+    object-position: center;    /* يخلي القص مظبوط */
+    display: block;
+}
+
+.card h3 {
+    color: #fff;
+    margin: 10px 0 5px;
+}
+
+.card p {
+    color: gold;
+}
+</style>
+
+</head>
+<body>
+
+<h1 style="text-align:center">❤️ المفضلة</h1>
+
+<div class="grid" id="wishlistContainer"></div>
+
+<script src="js/wishlist.js"></script>
+
+<script>
+function loadWishlist(){
+
+let data = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+let container = document.getElementById("wishlistContainer");
+
+container.innerHTML = data.map(item => `
+<div class="card">
+
+    <img src="${item.image}">
+    <h3>${item.name}</h3>
+    <p>${item.price} ج.م</p>
+
+    <button onclick="removeFromWishlist('${item.name}')">
+        حذف
+    </button>
+
+</div>
+`).join("");
+
+}
+
+loadWishlist();
+</script>
+
+</body>
+</html>

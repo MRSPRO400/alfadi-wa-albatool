@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حجز موعد زيارة المحل</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+.booking-container{
+    max-width:500px;
+    margin:60px auto;
+    padding:25px;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+    direction:rtl;
+}
+
+.booking-container h2{
+    margin-bottom:10px;
+    color:#111;
+}
+
+.booking-container p{
+    margin-bottom:20px;
+    color:#555;
+}
+
+.booking-container input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+}
+
+.book-btn{
+    display:inline-block;
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#D4AF37,#f5e6a1);
+    color:#111;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.book-btn:hover{
+    transform:translateY(-3px);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="booking-container">
+
+<h2>📅 حجز موعد زيارة المحل</h2>
+
+<p>املأ البيانات وسيتم التواصل معك فورًا لتأكيد الموعد</p>
+
+<input type="text" id="name" placeholder="الاسم الكامل">
+<input type="text" id="phone" placeholder="رقم الهاتف">
+<input type="date" id="date">
+
+<button class="book-btn" onclick="bookAppointment()">
+تأكيد الحجز عبر واتساب
+</button>
+
+</div>
+
+<script>
+function bookAppointment(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let date = document.getElementById("date").value;
+
+if(!name || !phone || !date){
+alert("من فضلك املأ جميع البيانات");
+return;
+}
+
+let message =
+`أريد حجز موعد زيارة المحل%0Aالاسم: ${name}%0Aرقم الهاتف: ${phone}%0Aالتاريخ: ${date}`;
+
+window.open(
+`https://wa.me/201224944936?text=${message}`,
+"_blank"
+);
+
+}
+</script>
+
+</body>
+</html>
